@@ -1,0 +1,182 @@
+import java.text.SimpleDateFormat
+
+/**
+ * Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * A copy of the License is located at
+ *
+ *     http://aws.amazon.com/apache2.0/
+ *
+ * or in the "license" file accompanying this file. This file is distributed
+ * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+// Uncomment when using CrashlyticsComponent
+//apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.crashlytics'
+apply from: "../artifacts.gradle"
+
+repositories {
+    // Uncomment when using CrashlyticsComponent
+    //maven { url 'https://maven.fabric.io/public' }
+    google()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        // Uncomment when using CrashlyticsComponent
+        //maven { url 'https://maven.fabric.io/public' }
+        google()
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.7.1'
+        // Uncomment when using CrashlyticsComponent
+        //classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'com.google.gms:google-services:4.3.3'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.0'
+    }
+}
+
+android {
+    def String versionCodeKey = 'VERSION_CODE'
+    def versionPropertiesFile = file('version.properties')
+    def Properties versionProperties = readVersionProperties(versionPropertiesFile)
+
+    def df = new SimpleDateFormat("yyyy-MM-dd HH:mmZ")
+    def String date = df.format(new Date(System.currentTimeMillis()))
+
+    def getDate = { ->
+        def dateFormatted = new Date()
+        def formattedDate = dateFormatted.format('yyyyMMdd')
+        return formattedDate
+    }
+
+    def currentCodeVersion = versionProperties[versionCodeKey].toString().toInteger()
+
+    compileSdkVersion 29
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        applicationId "com.laemmle.virtualcinema"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode currentCodeVersion
+        versionName "2.2.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+//        multiDexKeepProguard file('multidex-config.pro')
+        multiDexKeepFile file('multidex-config.txt')
+    }
+    buildTypes {
+        release {
+            setVersionNameSuffix(".${currentCodeVersion}")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            def int newVersionCode = currentCodeVersion + 1
+            versionProperties[versionCodeKey] = newVersionCode.toString()
+            store(versionPropertiesFile, versionProperties)
+        }
+        debug {
+            setVersionNameSuffix(".${currentCodeVersion} DEBUG [${date}]")
+            testCoverageEnabled = true
+//            multiDexKeepProguard file('multidex-config.pro')
+            multiDexKeepFile file('multidex-config.txt')
+        }
+    }
+    flavorDimensions "main"
+    productFlavors {
+        zype {
+
+        }
+        template {
+            applicationId "com.laemmle.virtualcinema"
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputNameNew = "Zype-AFTV" + "-" + variant.productFlavors.name + "-" + variant.buildType.name +
+                    "-" + defaultConfig.versionName + "-" + getDate() + ".apk"
+//            output.outputFile = new File(output.outputFile.parent, outputNameNew)
+            outputFileName = outputNameNew
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // this is for jackson
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/services/com.fasterxml.jackson.core.JsonFactory'
+        exclude 'META-INF/services/com.fasterxml.jackson.core.ObjectCodec'
+        exclude 'META-INF/rxjava.properties'
+    }
+    dexOptions {
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+public def readVersionProperties(File from) {
+    if (from.canRead()) {
+        def Properties result = new Properties()
+        result.load(new FileInputStream(from))
+        return result
+    } else {
+        throw new GradleException("Could not read version.properties!")
+    }
+}
+
+public def store(File to, Properties properties) {
+    properties.store(to.newWriter(), null)
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'org.mockito:mockito-core:1.9.5'
+    androidTestImplementation('androidx.test:rules:1.1.1') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation('androidx.test.ext:junit:1.1.1') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation 'com.google.dexmaker:dexmaker:1.2'
+    androidTestImplementation 'com.google.dexmaker:dexmaker-mockito:1.2'
+
+    androidTestImplementation 'com.jayway.android.robotium:robotium-solo:5.3.1'
+
+//    implementation 'com.google.firebase:firebase-crashlytics:17.0.1'
+//
+    api project(':TVUIComponent')
+    api project(':UAMP')
+//    implementation project(':AMZNMediaPlayerComponent')
+    api project(':ExoPlayer2MediaPlayerComponent')
+//    implementation project(':PassThroughAdsComponent')
+    api project(':VastAdsComponent')
+    api project(':AmazonInAppPurchaseComponent')
+    implementation project(':AkamaiAnalyticsComponent')
+    
+    api project(':CrashlyticsComponent')
+
+//    implementation project(':LoggerAnalyticsComponent')
+    implementation project(':SegmentAnalyticsComponent')
+    // Uncomment when using CrashlyticsComponent
+    /*implementation('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
+        transitive = true;
+    }*/
+    api project(':ZypeAuthComponent')
+}

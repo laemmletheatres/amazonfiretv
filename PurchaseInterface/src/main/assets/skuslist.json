@@ -1,0 +1,40 @@
+{
+  "skusList": [
+    {
+      "sku": "123.com.zype.month.test",
+      "productType": "SUBSCRIBE",
+      "purchaseSku": "com.zype.month.test.month",
+      "id": "aftvmonthly"
+    },
+    {
+      "sku": "com.zype.aftv.demo.year",
+      "productType": "SUBSCRIBE",
+      "purchaseSku": "com.zype.aftv.demo.year.year",
+      "id": "aftvyearly"
+    },
+    {
+      "sku": "RentUnPurchased",
+      "productType": "RENT",
+      "purchaseSku": "RentUnPurchased",
+      "id": "rent"
+    },
+    {
+      "sku": "com.zype.aftv.demo.buyVideo",
+      "productType": "BUY",
+      "purchaseSku": "com.zype.aftv.demo.buyVideo",
+      "id": "BuyVideo"
+    },
+    {
+      "sku": "com.zype.aftv.demo.buyPlaylist",
+      "productType": "BUY",
+      "purchaseSku": "com.zype.aftv.demo.buyPlaylist",
+      "id": "BuyPlaylist"
+    }
+  ],
+  "actions": {
+    "CONTENT_ACTION_DAILY_PASS": "RentUnPurchased",
+    "CONTENT_ACTION_SUBSCRIPTION": "com.zype.aftv.demo.month",
+    "CONTENT_ACTION_BUY_VIDEO": "com.zype.aftv.demo.buyVideo",
+    "CONTENT_ACTION_BUY_PLAYLIST": "com.zype.aftv.demo.buyPlaylist"
+  }
+}

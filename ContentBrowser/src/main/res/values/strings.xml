@@ -1,0 +1,94 @@
+<!--
+Copyright 2015-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+A copy of the License is located at
+
+    http://aws.amazon.com/apache2.0/
+
+or in the "license" file accompanying this file. This file is distributed
+on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+express or implied. See the License for the specific language governing
+permissions and limitations under the License.
+-->
+<resources>
+    <!-- IMPORTANT: Following 2 strings are concatenated to generate the multi-line title of Watch
+    now button, watch_now_1 being the first line of the title and watch_now_2 being the second line
+    of the title -->
+    <string name="watch_now_1">Watch</string>
+    <string name="watch_now_2">Now</string>
+    <!-- IMPORTANT: Following 2 strings are concatenated to generate the multi-line title of Watch
+    from Beginning button, watch_from_beginning_1 being the first line of the title and
+    watch_from_beginning_2 being the second line of the title -->
+    <string name="watch_from_beginning_1">Watch</string>
+    <string name="watch_from_beginning_2">from Beginning</string>
+    <!-- IMPORTANT: Following 2 strings are concatenated to generate the multi-line title of Resume
+     Playback button, resume_1 being the first line of the title and resume_2 being the second line
+     of the title -->
+    <string name="resume_1">Resume</string>
+    <string name="resume_2">Playback</string>
+    <!-- IMPORTANT: Following 2 strings are concatenated to generate the multi-line title of Go
+    Premium button, premium_1 being the first line of the title and premium_2 being the second
+    line of the title -->
+    <string name="premium_1">Go</string>
+    <string name="premium_2">Premium</string>
+    <!-- IMPORTANT: Following 2 strings are concatenated to generate the multi-line title of Daily
+    Pass button, daily_pass_1 being the first line of the title and daily_pass_2 being the second
+    line of the title -->
+    <string name="daily_pass_1">Daily</string>
+    <string name="daily_pass_2">Pass</string>
+    <!-- IMPORTANT: Following 3 strings are concatenated to generate the multi-line title of
+    Ad to Watchlist button and Remove from Watchlist button -->
+    <string name="watchlist_1">Add to</string>
+    <string name="watchlist_2">Remove from</string>
+    <string name="watchlist_3">Watchlist</string>
+
+    <string name="recommended_contents_header">Recommended Content</string>
+
+    <string name="optional_login_dialog_title">Login</string>
+    <string name="optional_login_dialog_message">Login now to get the most from your app.</string>
+    <string name="now">Now</string>
+    <string name="later">Later</string>
+
+    <string name="iap_error_dialog_title">Purchase Error</string>
+    <string name="subscription_expired">Your subscription expired!</string>
+    <string name="ok">@android:string/ok</string>
+
+    <string translatable="false" name="app_name">ContentBrowser</string>
+    <!-- Used in recommendations. Should be no more than 15 characters. -->
+    <string name="app_name_short">@string/app_name</string>
+
+    <!--
+        Zype, Evgeny Cherkasov
+    -->
+    <string name="action_buy_playlist_1">Buy all %1$s videos</string>
+    <string name="action_buy_playlist_2">$%1$s</string>
+    <string name="action_buy_video_1">Buy</string>
+    <string name="action_buy_video_2">Video</string>
+    <string name="action_favorites_add_1">Add to</string>
+    <string name="action_favorites_add_2">Favorites</string>
+    <string name="action_favorites_remove_1">Remove from</string>
+    <string name="action_favorites_remove_2">Favorites</string>
+    <string name="action_swaf_1">Watch</string>
+    <string name="action_swaf_2">Ad Free</string>
+    <string name="action_subscription_1">Subscribe</string>
+    <string name="action_subscription_2">to Watch</string>
+    <string name="favorites_label">Favorites</string>
+    <string name="menu_home">Home</string>
+    <string name="my_library_label">My Library</string>
+    <string name="subscription_alert_title">Subscription</string>
+    <string name="subscription_alert_message">You must have a subscription to play this video</string>
+
+    <string name="action_signup_to_watch1">Sign Up</string>
+    <string name="action_signup_to_watch2">to Watch</string>
+    <string name="action_registration_complete_title">Thank you for providing details</string>
+    <string name="action_registration_complete_message">Your account has been successfully logged in</string>
+    <string name="action_registration_complete_btn">Dismiss</string>
+    <string name="action_play_trailer_1">Watch</string>
+    <string name="action_play_trailer_2">Trailer</string>
+    <string name="epg_label">GUIDE</string>
+    <string name="alert">Alert</string>
+    <string name="alert_msg">We\'re sorry, that program is not yet available.</string>
+    <string name="currently_playing">Current programming</string>
+</resources>
