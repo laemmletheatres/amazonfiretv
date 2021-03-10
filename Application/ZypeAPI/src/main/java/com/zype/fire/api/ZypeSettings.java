@@ -54,12 +54,12 @@ public class ZypeSettings {
 
     // Monetization
     public static final boolean MARKETPLACE_CONNECT_SVOD = false;
-    public static final boolean NATIVE_SUBSCRIPTION_ENABLED = true;
+    public static final boolean NATIVE_SUBSCRIPTION_ENABLED = false;
     public static final boolean NATIVE_TVOD = false;
     public static final boolean PLAYLIST_PURCHASE_ENABLED = false;
     public static final boolean SUBSCRIBE_TO_WATCH_AD_FREE_ENABLED = false;
     public static final boolean UNIVERSAL_SUBSCRIPTION_ENABLED = false;
-    public static final boolean UNIVERSAL_TVOD = false;
+    public static final boolean UNIVERSAL_TVOD = true;
     public static final boolean FIREBASE_ENABLED = true;
 
     // Analytics

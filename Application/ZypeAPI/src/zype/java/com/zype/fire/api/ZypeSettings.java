@@ -39,7 +39,7 @@ public class ZypeSettings {
     public static final boolean SHOW_SEARCH_ICON = true;
     public static final boolean SETTINGS_PLAYLIST_ENABLED = true;
     public static final boolean SHOW_MENU_ICON = true;
-    public static final boolean TERMS_NAV_BUTTON_DISPLAY = true;
+    public static final boolean TERMS_NAV_BUTTON_DISPLAY = false;
     public static final boolean UNLOCK_TRANSPARENT = false;
 
     public static final String TERMS_CONDITION_URL  = "https://www.zype.com/";
@@ -47,8 +47,8 @@ public class ZypeSettings {
     // Features
     public static final boolean ACCOUNT_CREATION_TOS = false;
     public static final boolean DEVICE_LINKING = false;
-    public static final boolean FAVORITES_VIA_API = false;
-    public static final boolean LIBRARY_ENABLED = false;
+    public static final boolean FAVORITES_VIA_API = true;
+    public static final boolean LIBRARY_ENABLED = true;
 
     // Monetization
     public static final boolean MARKETPLACE_CONNECT_SVOD = false;

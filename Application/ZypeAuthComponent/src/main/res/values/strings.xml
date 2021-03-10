@@ -10,6 +10,6 @@
     <string name="zype_login_select_method_header">Have an account?</string>
     <string name="zype_login_username">Email</string>
     <string name="zype_login_password">Password</string>
-    <string name="login_description1">Enter your email and password to sign in. If you have any issues signing in please contact customer support.</string>
+    <string name="login_description1">Enter your email and password to sign in. If you have any issues signing in please contact customer support at www.laemmle.com/support</string>
 
 </resources>
